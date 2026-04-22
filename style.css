@@ -1,3 +1,5 @@
+
+/* Estilos para el diseño de la página */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f0f0f0;
@@ -6,6 +8,18 @@ body {
     height: 100vh;
 }
 
+button {
+    background-color: rgb(63, 123, 178);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/** SECCION SIDEBAR */
 .sidebar {
     background-color: rgb(63, 123, 178);
     width: 260px;
@@ -47,3 +61,17 @@ body {
     background-color: rgb(34, 79, 121);
     border-radius: 5px;
 }
+/** Final SECCION SIDEBAR */
+
+/*** SECCION CATEGORIES */
+.FormCategoria {
+    background-color: rgb(255, 255, 255);
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*** Final SECCION CATEGORIES */
