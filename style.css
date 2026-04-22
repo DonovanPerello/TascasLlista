@@ -10,7 +10,6 @@ body {
     background-color: rgb(104, 158, 209);
     width: 260px;
     height: 100vh;
-    
     padding: 20px;
     box-sizing: border-box;
 }
@@ -38,6 +37,5 @@ body {
 
 .sidebarElement a:hover {
     background-color: rgb(156, 198, 237);
-   
     border-radius: 5px;
 }
