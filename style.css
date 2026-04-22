@@ -7,11 +7,19 @@ body {
 }
 
 .sidebar {
-    background-color: rgb(104, 158, 209);
+    background-color: rgb(63, 123, 178);
     width: 260px;
     height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+}
+.sidebar h2 {
+    color: rgb(255, 255, 255);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .sidebarList {
@@ -27,8 +35,8 @@ body {
 
 .sidebarElement a {
     text-decoration: none;
-    color: black;
-    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    font-size: 0.9rem;
     font-weight: 600;
     display: block;
     padding: 12px;
@@ -36,6 +44,6 @@ body {
 }
 
 .sidebarElement a:hover {
-    background-color: rgb(156, 198, 237);
+    background-color: rgb(34, 79, 121);
     border-radius: 5px;
 }
