@@ -18,6 +18,11 @@ button {
     font-weight: 600;
     transition: 0.3s;
 }
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /** SECCION SIDEBAR */
 .sidebar {
@@ -69,8 +74,19 @@ button {
     flex: 1;
     padding: 20px;
     box-sizing: border-box;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+.ContainerCategories {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    width: 40%;
+    justify-content: center;
 }
 
 
