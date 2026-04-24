@@ -24,6 +24,29 @@ main {
     align-items: center;
 }
 
+.caja {
+    background-color: rgb(255, 255, 255);
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+a {
+    text-decoration: none;
+    color: rgb(63, 123, 178);
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 /** SECCION SIDEBAR */
 .sidebar {
     background-color: rgb(63, 123, 178);
@@ -69,17 +92,7 @@ main {
 /** Final SECCION SIDEBAR */
 
 /*** SECCION CATEGORIES */
-.FormCategoria {
-    background-color: rgb(255, 255, 255);
-    flex: 1;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
-}
+
 .ContainerCategories {
     display: flex;
     flex-direction: column;
@@ -91,3 +104,15 @@ main {
 
 
 /*** Final SECCION CATEGORIES */
+
+/** lista categorias */
+
+.listaCategorias {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: 40%;
+}
+
+/** final lista categorias */
