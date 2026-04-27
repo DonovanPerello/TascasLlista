@@ -38,25 +38,24 @@ console.log(databasesCategories);
 
 function mostrarCategorias(){
 
-    const contenedor = document.getElementById("listaCategorias");
+    const contenedor = document.getElementById("listaCategoriasUl");
     
     
     contenedor.innerHTML = '';
 
     databasesCategories.forEach((categoria, index) => {
         contenedor.innerHTML += `
-        
-            <ul class="listaCategoriasUl caja">
+        <div class="CategoriaItem">
                 <li class="categoriaItem"> 
                     <div class="colorCircle" style=" background-color: ${categoria.colorPicker};"></div> 
                     ${categoria.nombreCategoria} 
                     <div class="buttonDelete">
                             <button  onclick="borrarCategoria(${index})">
-                                Delete
+                                Eliminar
                             </button>
                     </div>
                 </li>
-            </ul>
+        </div>
         
         `
     });

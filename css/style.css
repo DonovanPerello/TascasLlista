@@ -117,7 +117,7 @@ ul {
 
 .listaCategoriasUl{
     display: flex;
-    gap: 3px;
+    gap: 10px;
     margin-top: 3px;
 }
 
@@ -136,13 +136,16 @@ ul {
 
 .buttonDelete button {
     background-color: rgb(255, 18, 18);
-    border: 1px solid black;
     color: white;
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 600;
-    border-radius: 2px;
+    border-radius: 4px;
     
+}
+
+.categoriaItem .buttonDelete {
+    margin-left: auto;
 }
 
 .buttonDelete button:hover {
@@ -150,4 +153,11 @@ ul {
     color: rgb(2, 1, 1);
     
 }
+
+.categoriaItem{
+    background-color: rgba(202, 199, 199, 0.4);
+    padding: 10px;
+    border-radius: 5px;
+}
+
 /** final lista categorias */
