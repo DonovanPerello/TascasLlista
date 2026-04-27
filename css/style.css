@@ -110,9 +110,27 @@ ul {
 .listaCategorias {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 5px;
+    margin-top: 5px;
     width: 40%;
+}
+.listaCategoriasUl{
+    display: flex;
+    gap: 3px;
+    margin-top: 3px;
+}
+
+.categoriaItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.colorCircle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%  ;
+    border: 1px solid black;
 }
 
 /** final lista categorias */
