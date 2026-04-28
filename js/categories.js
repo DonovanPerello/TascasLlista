@@ -1,4 +1,4 @@
-databasesCategories = [];
+let databasesCategories = [];
 
 
 
@@ -8,8 +8,9 @@ event.preventDefault();
  const name =   document.getElementById("categoryName").value;
  const colorPicker =  document.getElementById("colorPicker").value;
 
-    if(name === null){
+    if(name.trim() === ""){
         event.preventDefault();
+        return;
     }
 
     let Categoria = {
