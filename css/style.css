@@ -17,6 +17,7 @@ button {
     font-size: 0.9rem;
     font-weight: 600;
     transition: 0.3s;
+    border-radius: 4px;
 }
 main {
     display: flex;
@@ -161,3 +162,55 @@ ul {
 }
 
 /** final lista categorias */
+
+/* Seccion tascas */
+.formulari-tasca.caja {
+    max-width: 450px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.camp-tasca {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.camp-tasca label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-tasca, 
+.textarea-tasca, 
+.data-tasca, 
+.select-tasca {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.textarea-tasca {
+    height: 100px;
+    resize: vertical;
+}
+
+.boto-crear-tasca {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/**final seccion tascas */
