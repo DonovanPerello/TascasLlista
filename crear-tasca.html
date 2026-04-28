@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Crear Tasques</title>
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>Menu</h2>
+        <ul class="sidebarList">
+            <li class="sidebarElement"> <a href="index.html">Llistat d'Activitats</a></li>
+            <li class="sidebarElement"> <a href="crear-tasca.html"> Crear Tasca</a></li>
+            <li class="sidebarElement"> <a href="categories.html">Gestio de Categories</a></li>
+        </ul>
+    </aside>
+    <main style="padding: 20px; flex-grow: 1;">
+        
+        <h1>Crear Tasca</h1>
+        <form class="formulari-tasca caja">
+    
+    <div class="camp-tasca">
+        <label for="titol">Títol:</label>
+        <input type="text" id="titol" name="titol" class="input-tasca">
+    </div>
+
+    <div class="camp-tasca">
+        <label for="descripcio">Descripció:</label>
+        <textarea id="descripcio" name="descripcio" class="textarea-tasca"></textarea>
+    </div>
+
+    <div class="camp-tasca">
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" class="data-tasca">
+    </div>
+
+    <div class="camp-tasca " id = "select-categoria">
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" class="select-tasca">
+            <option value=""></option>
+        </select>
+    </div>
+
+    <div class="camp-tasca">
+        <label for="prioritat">Prioritat:</label>
+        <select id="prioritat" name="prioritat" class="select-tasca">
+            <option value="baixa">Baixa</option>
+            <option value="mitjana">Mitjana</option>
+            <option value="alta">Alta</option>
+        </select>
+    </div>
+
+    <button type="submit" class="boto-crear-tasca">Crear Tasca</button>
+
+</form>
+        
+    </main>
+    <script src="js/form-tasca.js"></script>
+</body>
+</html>
