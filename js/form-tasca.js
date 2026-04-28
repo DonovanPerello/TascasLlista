@@ -50,7 +50,8 @@ document.getElementById("formTasca").addEventListener('submit', function(event){
         titol : titol,
         descripcio: descripcio,
         data: data,
-        categoria: categoria
+        categoria: categoria,
+        completado: false
     }
 
     databaseTascas.push(Tasca);
