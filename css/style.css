@@ -214,3 +214,34 @@ ul {
 }
 
 /**final seccion tascas */
+
+/** Seccion index */
+
+    .pushActivity {
+        width: 90%;
+        max-height: 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .contenedor-pujar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    display: flex;
+   
+    }
+
+    input {
+        padding: 8px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        outline: none;
+    }
+    .palabraA{
+        color: white;
+    }
+
+
+/** final seccion index */
