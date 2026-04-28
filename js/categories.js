@@ -1,7 +1,4 @@
-let databasesCategories = [];
-
-
-
+export let databasesCategories = [];
 
 document.getElementById("FormCategoria").addEventListener('submit', function(event){
 event.preventDefault();
@@ -25,8 +22,6 @@ event.preventDefault();
 
     localStorage.setItem("databasesCategories", JSON.stringify(databasesCategories));
 
-  
-
 });
 
  let arrayRecojido = JSON.parse(localStorage.getItem("databasesCategories"));
@@ -37,10 +32,11 @@ if(arrayRecojido != null){
  
 console.log(databasesCategories);
 
-function mostrarCategorias(){
+export function mostrarCategorias(){
 
     const contenedor = document.getElementById("listaCategoriasUl");
     
+    if(!contenedor) return;
     
     contenedor.innerHTML = '';
 
@@ -62,10 +58,12 @@ function mostrarCategorias(){
     });
 }
 
-function borrarCategoria(index){
+export function borrarCategoria(index){
 
     databasesCategories.splice(index,1);
         localStorage.setItem('databasesCategories',JSON.stringify(databasesCategories));
     mostrarCategorias();
 
 }
+
+window.borrarCategoria = borrarCategoria;

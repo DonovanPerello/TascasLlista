@@ -1,14 +1,15 @@
-let databasesCategories = [];
+export let databasesCategories = [];
 
-let databaseTascas = [];
+export let databaseTascas = JSON.parse(localStorage.getItem("databaseTascas")) || [];
 
 const datosLocal = localStorage.getItem("databasesCategories");
 if (datosLocal) {
     databasesCategories = JSON.parse(datosLocal);
 }
 
-function cargarCategoria() {
+export function cargarCategoria() {
     const selectElement = document.getElementById("categoria");
+    if (!selectElement) return;
     
     selectElement.innerHTML = '<option value="">Selecciona una categoria</option>';
 
@@ -25,7 +26,8 @@ cargarCategoria();
 console.log(databasesCategories);
 
 document.getElementById("formTasca").addEventListener('submit', function(event){
-event.preventDefault();
+    event.preventDefault();
+    
     const titol = document.getElementById("titol").value;
     const descripcio = document.getElementById("descripcio").value;
     const data = document.getElementById("data").value;
@@ -34,32 +36,26 @@ event.preventDefault();
     let fechaSeleccionada = new Date(data).setHours(0,0,0,0);
     let fechaHoy = new Date().setHours(0,0,0,0);
 
-
     if (titol.trim() === "" || descripcio.trim() === "" || data === "" || categoria === "") {
-    alert("Por favor, rellena todos los campos");
-    return; 
-}
+        alert("Por favor, rellena todos los campos");
+        return; 
+    }
 
-    if( fechaSeleccionada < fechaHoy){
+    if (fechaSeleccionada < fechaHoy) {
         alert("La fecha no puede ser anterior a la fecha actual");
-        event.preventDefault();
         return;
     };
 
     let Tasca = {
-    titol : titol,
-    descripcio: descripcio,
-    data: data,
-    categoria: categoria
+        titol : titol,
+        descripcio: descripcio,
+        data: data,
+        categoria: categoria
     }
 
     databaseTascas.push(Tasca);
-    //mostrarTascas();
 
     console.log(databaseTascas);
 
     localStorage.setItem("databaseTascas", JSON.stringify(databaseTascas));
-
-  
-
 });
