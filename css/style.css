@@ -245,3 +245,26 @@ ul {
 
 
 /** final seccion index */
+
+
+/** MEDIAQUERIES */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+    .caja {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .ContainerCategories {
+        width: 90%;
+    }
+    .listaCategorias {
+        width: 90%;
+    }
+}
