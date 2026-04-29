@@ -25,7 +25,9 @@ cargarCategoria();
 
 console.log(databasesCategories);
 
-document.getElementById("formTasca").addEventListener('submit', function(event){
+const formTascaElement = document.getElementById("formTasca");
+if (formTascaElement) {
+    formTascaElement.addEventListener('submit', function(event){
     event.preventDefault();
     
     const titol = document.getElementById("titol").value;
@@ -33,24 +35,33 @@ document.getElementById("formTasca").addEventListener('submit', function(event){
     const data = document.getElementById("data").value;
     const categoria = document.getElementById("categoria").value;
 
-    let fechaSeleccionada = new Date(data).setHours(0,0,0,0);
-    let fechaHoy = new Date().setHours(0,0,0,0);
+   
 
     if (titol.trim() === "" || descripcio.trim() === "" || data === "" || categoria === "") {
         alert("Por favor, rellena todos los campos");
         return; 
     }
 
+    const fechaInput = document.getElementById("data").value;
+
+
+    const dataValue = document.getElementById("data").value;
+
+    const partes = dataValue.split("-");
+    const fechaSeleccionada = new Date(partes[0], partes[1] - 1, partes[2]).setHours(0,0,0,0);
+
+    const fechaHoy = new Date().setHours(0,0,0,0);
+
     if (fechaSeleccionada < fechaHoy) {
         alert("La fecha no puede ser anterior a la fecha actual");
         return;
-    };
+    }
 
     let Tasca = {
         titol : titol,
         descripcio: descripcio,
         data: data,
-        categoria: categoria,
+        categoria: Objectcategoria,
         completado: false
     }
 
@@ -59,4 +70,4 @@ document.getElementById("formTasca").addEventListener('submit', function(event){
     console.log(databaseTascas);
 
     localStorage.setItem("databaseTascas", JSON.stringify(databaseTascas));
-});
+})};

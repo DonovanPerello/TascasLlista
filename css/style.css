@@ -294,7 +294,23 @@ ul {
         color: white;
     }
 
+    .tascasIndex{
+    
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    }
 
+    .cajaTasques {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    width: 90%;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    font-family: system-ui, sans-serif;
+    
+}
 /** final seccion index */
 
 
