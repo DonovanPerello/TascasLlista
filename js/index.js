@@ -20,11 +20,11 @@ export function mostrarTascas(){
 
         let colorPrioritat = "#ffffff";
         
-        if(Tasca.prioritat === "alta"){
+        if(Tasca.prioritat === "Alta"){
             colorPrioritat = "rgb(255, 0, 0, 0.4)";
-        } else if (Tasca.prioritat === "mitjana"){
+        } else if (Tasca.prioritat === "Mitjana"){
             colorPrioritat = "rgb(255, 165, 0, 0.4)";
-        }   else if (Tasca.prioritat === "baixa"){
+        }   else if (Tasca.prioritat === "Baixa"){
             colorPrioritat = "rgb(0, 128, 0, 0.4)";
         }
 
@@ -35,7 +35,7 @@ export function mostrarTascas(){
         </div>
         `
 
-        if(Tasca.completado === true){
+        if(Tasca.realitzada === true){
             svgCheck = `
             <div class="svgContainer">
                 <svg onclick="DescompletarTasca(${index})" id="undo-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-undo2-icon lucide-undo-2"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>
@@ -44,7 +44,7 @@ export function mostrarTascas(){
             `
         }
 
-        let claseCompletada = Tasca.completado ? "tasca-finalizada" : "";
+        let claseCompletada = Tasca.realitzada ? "tasca-finalizada" : "";
 
         let TascaFormulari = `
             <div class="tascasIndex ${claseCompletada}" style="background-color: ${colorPrioritat};">
@@ -57,11 +57,11 @@ export function mostrarTascas(){
                         <p class="descripcio">${Tasca.descripcio}</p>
                     </details>
                     <p>${Tasca.data}</p>
-                    <p style="background-color: ${Tasca.categoria.colorPicker}; width: max-content;">${Tasca.categoria.nombreCategoria}</p>
+                    <p style="background-color: ${Tasca.categoria.color}; width: max-content;">${Tasca.categoria.nom}</p>
                     ${svgCheck}
             </div>
         `;
-        if(Tasca.completado === false){
+        if(Tasca.realitzada === false){
         contenedor.innerHTML += TascaFormulari;
         } else {
         contenedorCompletadas.innerHTML += TascaFormulari;
@@ -72,14 +72,14 @@ export function mostrarTascas(){
 
 export function CompletarTasca(index){
 
-    databaseTascas[index].completado = true;
+    databaseTascas[index].realitzada = true;
     localStorage.setItem("databaseTascas", JSON.stringify(databaseTascas));
     mostrarTascas();
 }
 
 export function DescompletarTasca(index){
 
-    databaseTascas[index].completado = false;
+    databaseTascas[index].realitzada = false;
     localStorage.setItem("databaseTascas", JSON.stringify(databaseTascas));
     mostrarTascas();
 }

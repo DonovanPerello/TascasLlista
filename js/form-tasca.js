@@ -15,8 +15,8 @@ export function cargarCategoria() {
 
     databasesCategories.forEach(cat => {
         const option = document.createElement("option");
-        option.value = cat.nombreCategoria;
-        option.textContent = cat.nombreCategoria;
+        option.value = cat.nom;
+        option.textContent = cat.nom;
         selectElement.appendChild(option);
     });
 }
@@ -58,7 +58,7 @@ if (formTascaElement) {
         return;
     }
     const categoriaSeleccionada = document.getElementById("categoria").value;
-    const Objectcategoria = databasesCategories.find(cat => cat.nombreCategoria === categoriaSeleccionada);
+    const Objectcategoria = databasesCategories.find(cat => cat.nom === categoriaSeleccionada);
     
     let Tasca = {
         titol : titol,
@@ -66,7 +66,7 @@ if (formTascaElement) {
         data: data,
         categoria: Objectcategoria,
         prioritat : prioritat,
-        completado: false
+        realitzada: false
     }
 
     databaseTascas.push(Tasca);

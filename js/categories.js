@@ -6,13 +6,13 @@ if (formCat) {
     formCat.addEventListener('submit', function(event) {
         event.preventDefault();
         const name = document.getElementById("categoryName").value;
-        const colorPicker = document.getElementById("colorPicker").value;
+        const color = document.getElementById("color").value;
 
         if (name.trim() === "") return;
 
         let Categoria = {
-            nombreCategoria: name,
-            colorPicker: colorPicker
+            nom: name,
+            color: color
         };
 
         databasesCategories.push(Categoria);
@@ -40,8 +40,8 @@ export function mostrarCategorias() {
         contenedor.innerHTML += `
         <div class="CategoriaItem">
             <li class="categoriaItem"> 
-                <div class="colorCircle" style="background-color: ${categoria.colorPicker};"></div> 
-                <span class="nombre-cat">${categoria.nombreCategoria}</span>
+                <div class="colorCircle" style="background-color: ${categoria.color};"></div> 
+                <span class="nombre-cat">${categoria.nom}</span>
                 <div class="buttonDelete">
                     <button onclick="borrarCategoria(${index})">Eliminar</button>
                 </div>
