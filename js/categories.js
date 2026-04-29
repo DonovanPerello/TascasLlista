@@ -1,3 +1,4 @@
+import { guardarDatos} from "./storage.js"
 export let databasesCategories = [];
 
 const formCat = document.getElementById("FormCategoria");
@@ -17,7 +18,7 @@ if (formCat) {
 
         databasesCategories.push(Categoria);
         mostrarCategorias();
-        localStorage.setItem("databasesCategories", JSON.stringify(databasesCategories));
+        guardarDatos("databaseCategories", databasesCategories);
     });
 }
 
@@ -52,7 +53,7 @@ export function mostrarCategorias() {
 
 export function borrarCategoria(index) {
     databasesCategories.splice(index, 1);
-    localStorage.setItem('databasesCategories', JSON.stringify(databasesCategories));
+    guardarDatos("databaseCategories", databasesCategories);
     mostrarCategorias();
 }
 console.log(databasesCategories)
