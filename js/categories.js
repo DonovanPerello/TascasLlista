@@ -30,11 +30,6 @@ if(arrayRecojido != null){
     databasesCategories = arrayRecojido;
     mostrarCategorias();
 }
-<<<<<<< HEAD
- 
-=======
->>>>>>> 9d8a36b8f3f12b2c16f87e657eca5743c73bd221
-
 console.log(databasesCategories);
 
 export function mostrarCategorias(){
