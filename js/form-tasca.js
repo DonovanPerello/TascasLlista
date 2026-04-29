@@ -71,6 +71,8 @@ if (formTascaElement) {
 
     databaseTascas.push(Tasca);
 
+   
+
     console.log(databaseTascas);
 
     localStorage.setItem("databaseTascas", JSON.stringify(databaseTascas));

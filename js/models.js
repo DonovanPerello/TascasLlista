@@ -47,6 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     databaseTascas.push(...data);
                     mostrarTascas();
                     console.log(databaseTascas);
+
+                    const soloCategorias = data.map(tasca => tasca.categoria);
+                    databasesCategories.push(soloCategorias);
+                    
                 })
                 .catch(err => console.error("Fallo en fetch:", err));
         });
