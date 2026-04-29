@@ -34,6 +34,7 @@ if (formTascaElement) {
     const descripcio = document.getElementById("descripcio").value;
     const data = document.getElementById("data").value;
     const categoria = document.getElementById("categoria").value;
+    const prioritat = document.getElementById("prioritat").value;
 
    
 
@@ -56,12 +57,14 @@ if (formTascaElement) {
         alert("La fecha no puede ser anterior a la fecha actual");
         return;
     }
-
+    const categoriaSeleccionada = document.getElementById("categoria").value;
+    const Objectcategoria = databasesCategories.find(cat => cat.nombreCategoria === categoriaSeleccionada);
     let Tasca = {
         titol : titol,
         descripcio: descripcio,
         data: data,
         categoria: Objectcategoria,
+        prioritat : prioritat,
         completado: false
     }
 
