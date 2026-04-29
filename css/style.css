@@ -127,12 +127,20 @@ ul {
     align-items: center;
     gap: 8px;
 }
+.nombre-cat {
+   flex-grow: 1;      
+    white-space: nowrap; 
+    overflow: hidden;   
+    text-overflow: ellipsis; 
+    min-width: 0;
+}
 
 .colorCircle {
     width: 20px;
     height: 20px;
     border-radius: 50%  ;
     border: 1px solid black;
+    flex-shrink: 0;
 }
 
 .buttonDelete button {
@@ -147,6 +155,11 @@ ul {
 
 .categoriaItem .buttonDelete {
     margin-left: auto;
+    
+}   
+.buttonDelete{ 
+    
+    flex-shrink: 0;
 }
 
 .buttonDelete button:hover {

@@ -45,7 +45,7 @@ export function mostrarCategorias(){
         <div class="CategoriaItem">
                 <li class="categoriaItem"> 
                     <div class="colorCircle" style=" background-color: ${categoria.colorPicker};"></div> 
-                    ${categoria.nombreCategoria} 
+                    <span class="nombre-cat">${categoria.nombreCategoria}</span>
                     <div class="buttonDelete">
                             <button  onclick="borrarCategoria(${index})">
                                 Eliminar
