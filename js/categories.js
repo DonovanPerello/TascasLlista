@@ -30,6 +30,7 @@ if(arrayRecojido != null){
     mostrarCategorias();
 }
  
+
 console.log(databasesCategories);
 
 export function mostrarCategorias(){
