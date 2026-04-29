@@ -25,11 +25,15 @@ event.preventDefault();
 });
 
  let arrayRecojido = JSON.parse(localStorage.getItem("databasesCategories"));
+
 if(arrayRecojido != null){
     databasesCategories = arrayRecojido;
     mostrarCategorias();
 }
+<<<<<<< HEAD
  
+=======
+>>>>>>> 9d8a36b8f3f12b2c16f87e657eca5743c73bd221
 
 console.log(databasesCategories);
 
@@ -46,7 +50,7 @@ export function mostrarCategorias(){
         <div class="CategoriaItem">
                 <li class="categoriaItem"> 
                     <div class="colorCircle" style=" background-color: ${categoria.colorPicker};"></div> 
-                    ${categoria.nombreCategoria} 
+                    <span class="nombre-cat">${categoria.nombreCategoria}</span>
                     <div class="buttonDelete">
                             <button  onclick="borrarCategoria(${index})">
                                 Eliminar
