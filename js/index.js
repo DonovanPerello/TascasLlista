@@ -1,4 +1,5 @@
 import { databaseTascas,  } from "./form-tasca.js";
+import { mostrarArchivos } from "./models.js";
 
 console.log(databaseTascas);
 
@@ -15,9 +16,9 @@ export function mostrarTascas(){
     if (!contenedor || !contenedorCompletadas) return;
     databaseTascas.forEach((Tasca, index) => {
 
-        const colorCategoria = Tasca.categoria ? Tasca.categoria.colorPicker : "#000000";
+        const colorCategoria = Tasca.categoria ? Tasca.categoria.color : "#000000";
 
-        let colorPrioritat = "#000000";
+        let colorPrioritat = "#ffffff";
         
         if(Tasca.prioritat === "alta"){
             colorPrioritat = "rgb(255, 0, 0, 0.4)";
@@ -93,3 +94,4 @@ window.CompletarTasca = CompletarTasca;
 window.borrarTasca = borrarTasca;
 window.DescompletarTasca = DescompletarTasca;
 mostrarTascas();
+mostrarArchivos();

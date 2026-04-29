@@ -1,69 +1,59 @@
 export let databasesCategories = [];
 
-document.getElementById("FormCategoria").addEventListener('submit', function(event){
-event.preventDefault();
- const name =   document.getElementById("categoryName").value;
- const colorPicker =  document.getElementById("colorPicker").value;
+const formCat = document.getElementById("FormCategoria");
 
-    if(name.trim() === ""){
+if (formCat) {
+    formCat.addEventListener('submit', function(event) {
         event.preventDefault();
-        return;
-    }
+        const name = document.getElementById("categoryName").value;
+        const colorPicker = document.getElementById("colorPicker").value;
 
-    let Categoria = {
-    nombreCategoria : name,
-    colorPicker: colorPicker
-    }
+        if (name.trim() === "") return;
 
-    databasesCategories.push(Categoria);
-    mostrarCategorias();
+        let Categoria = {
+            nombreCategoria: name,
+            colorPicker: colorPicker
+        };
 
-    console.log(databasesCategories);
-
-    localStorage.setItem("databasesCategories", JSON.stringify(databasesCategories));
-
-});
-
- let arrayRecojido = JSON.parse(localStorage.getItem("databasesCategories"));
-
-if(arrayRecojido != null){
-    databasesCategories = arrayRecojido;
-    mostrarCategorias();
+        databasesCategories.push(Categoria);
+        mostrarCategorias();
+        localStorage.setItem("databasesCategories", JSON.stringify(databasesCategories));
+    });
 }
-console.log(databasesCategories);
 
-export function mostrarCategorias(){
+let arrayRecojido = JSON.parse(localStorage.getItem("databasesCategories"));
 
+if (arrayRecojido != null) {
+    databasesCategories = arrayRecojido;
+    if (document.getElementById("listaCategoriasUl")) {
+        mostrarCategorias();
+    }
+}
+
+export function mostrarCategorias() {
     const contenedor = document.getElementById("listaCategoriasUl");
-    
-    if(!contenedor) return;
-    
+    if (!contenedor) return;
+
     contenedor.innerHTML = '';
 
     databasesCategories.forEach((categoria, index) => {
         contenedor.innerHTML += `
         <div class="CategoriaItem">
-                <li class="categoriaItem"> 
-                    <div class="colorCircle" style=" background-color: ${categoria.colorPicker};"></div> 
-                    <span class="nombre-cat">${categoria.nombreCategoria}</span>
-                    <div class="buttonDelete">
-                            <button  onclick="borrarCategoria(${index})">
-                                Eliminar
-                            </button>
-                    </div>
-                </li>
-        </div>
-        
-        `
+            <li class="categoriaItem"> 
+                <div class="colorCircle" style="background-color: ${categoria.colorPicker};"></div> 
+                <span class="nombre-cat">${categoria.nombreCategoria}</span>
+                <div class="buttonDelete">
+                    <button onclick="borrarCategoria(${index})">Eliminar</button>
+                </div>
+            </li>
+        </div>`;
     });
 }
 
-export function borrarCategoria(index){
-
-    databasesCategories.splice(index,1);
-        localStorage.setItem('databasesCategories',JSON.stringify(databasesCategories));
+export function borrarCategoria(index) {
+    databasesCategories.splice(index, 1);
+    localStorage.setItem('databasesCategories', JSON.stringify(databasesCategories));
     mostrarCategorias();
-
 }
 
 window.borrarCategoria = borrarCategoria;
