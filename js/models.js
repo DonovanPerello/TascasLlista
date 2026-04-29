@@ -1,6 +1,7 @@
 import { databasesCategories } from "./categories.js";
 import { databaseTascas } from "./form-tasca.js";
 import { mostrarTascas } from "./index.js";
+import { guardarDatos} from "./storage.js"
 
 const archivosDisponibles = [
     "activitats_001.json",
@@ -48,9 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     mostrarTascas();
                     console.log(databaseTascas);
 
-                    const soloCategorias = data.map(tasca => tasca.categoria);
-                    databasesCategories.push(soloCategorias);
+                    guardarDatos("databaseTascas", databaseTascas);
                     
+
+                    const soloCategorias = data.map(tasca => tasca.categoria);
+                    databasesCategories.push(...soloCategorias);
+                    console.log(databasesCategories);
+                    
+                    guardarDatos("databaseCategories", databasesCategories);
                 })
                 .catch(err => console.error("Fallo en fetch:", err));
         });

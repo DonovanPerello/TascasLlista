@@ -55,5 +55,6 @@ export function borrarCategoria(index) {
     localStorage.setItem('databasesCategories', JSON.stringify(databasesCategories));
     mostrarCategorias();
 }
-
+console.log(databasesCategories)
 window.borrarCategoria = borrarCategoria;
+
