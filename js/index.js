@@ -43,26 +43,23 @@ export function mostrarTascas(){
             `
         }
 
+        let claseCompletada = Tasca.completado ? "tasca-finalizada" : "";
 
-
-        
-
-        let TascaFormulari =  `
-        <div class="tascasIndex" style="background-color: ${colorPrioritat};">
-                <div class="titlePrioritatContainer">
-                    <h3>${Tasca.titol}</h3>
-                    <p> ${Tasca.prioritat}</p>
-                </div>
-                <details>
-                    <summary style="cursor:pointer; color: #000000; "> Leer descripción... </summary>
-                    <p class="descripcio">${Tasca.descripcio}</p>
-                </details>
-                <p>${Tasca.data}</p>
-                <p>${Tasca.categoria.nombreCategoria}</p>
-                ${svgCheck}
-        </div>
-        
-        `
+        let TascaFormulari = `
+            <div class="tascasIndex ${claseCompletada}" style="background-color: ${colorPrioritat};">
+                    <div class="titlePrioritatContainer">
+                        <h3>${Tasca.titol}</h3>
+                        <p> ${Tasca.prioritat}</p>
+                    </div>
+                    <details>
+                        <summary style="cursor:pointer; color: #000000; "> Leer descripción... </summary>
+                        <p class="descripcio">${Tasca.descripcio}</p>
+                    </details>
+                    <p>${Tasca.data}</p>
+                    <p style="background-color: ${Tasca.categoria.colorPicker}; width: max-content;">${Tasca.categoria.nombreCategoria}</p>
+                    ${svgCheck}
+            </div>
+        `;
         if(Tasca.completado === false){
         contenedor.innerHTML += TascaFormulari;
         } else {

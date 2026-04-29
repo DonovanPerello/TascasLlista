@@ -59,6 +59,7 @@ if (formTascaElement) {
     }
     const categoriaSeleccionada = document.getElementById("categoria").value;
     const Objectcategoria = databasesCategories.find(cat => cat.nombreCategoria === categoriaSeleccionada);
+    
     let Tasca = {
         titol : titol,
         descripcio: descripcio,
