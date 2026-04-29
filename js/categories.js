@@ -25,11 +25,12 @@ event.preventDefault();
 });
 
  let arrayRecojido = JSON.parse(localStorage.getItem("databasesCategories"));
+
 if(arrayRecojido != null){
     databasesCategories = arrayRecojido;
     mostrarCategorias();
 }
- 
+
 console.log(databasesCategories);
 
 export function mostrarCategorias(){

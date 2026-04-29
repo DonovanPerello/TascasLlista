@@ -106,7 +106,41 @@ ul {
     width: 40%;
     justify-content: center;
 }
+.FormCategoria input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.color-group {
+    display: flex;
+    align-items: center; 
+    
+    gap: 15px;           
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.FormCategoria input[type="color"] {
+    width: 50px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.FormCategoria {
+    display: flex;
+    flex-direction: column;
+   
+}
 
+.FormCategoria label {
+   
+    font-family: sans-serif;
+}
+
+.FormCategoria button {
+    width: 40%;
+    margin-top: 15px;
+}
 
 /*** Final SECCION CATEGORIES */
 
@@ -284,4 +318,8 @@ ul {
     .listaCategorias {
         width: 90%;
     }
+    .FormCategoria button {
+    width: 100%;
+    margin-top: 15px;
+}
 }
