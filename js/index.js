@@ -57,7 +57,7 @@ export function mostrarTascas(){
                         <summary style="cursor:pointer; color: #000000; "> Leer descripción... </summary>
                         <p class="descripcio">${Tasca.descripcio}</p>
                     </details>
-                    <p>${Tasca.data}</p>
+                    <p style="margin: 4px;">${Tasca.data}</p>
                     <p style="background-color: ${Tasca.categoria.color}; width: max-content;">${Tasca.categoria.nom}</p>
                     ${svgCheck}
             </div>
