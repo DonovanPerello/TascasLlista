@@ -17,7 +17,6 @@ export function cargarCategoria() {
 
 cargarCategoria();
 
-console.log(databasesCategories);
 
 const formTascaElement = document.getElementById("formTasca");
 if (formTascaElement) {
@@ -65,9 +64,6 @@ if (formTascaElement) {
 
     databaseTascas.push(Tasca);
 
-   
-
-    console.log(databaseTascas);
 
     localStorage.setItem("databaseTascas", JSON.stringify(databaseTascas));
 })};

@@ -2,7 +2,7 @@ import { mostrarArchivos } from "./models.js";
 import { guardarDatos,databaseTascas,databasesCategories} from "./storage.js";
 
 
-console.log(databaseTascas);
+
 
 export function mostrarTascas(){
 
