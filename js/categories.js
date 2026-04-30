@@ -1,8 +1,5 @@
-import { guardarDatos} from "./storage.js";
-
-
-export let databasesCategories = JSON.parse(localStorage.getItem("databasesCategories")) || [];
-
+import { mostrarTascas } from "./index.js";
+import { guardarDatos, databaseTascas, databasesCategories } from "./storage.js";
 
 const formCat = document.getElementById("FormCategoria");
 
@@ -25,13 +22,8 @@ if (formCat) {
     });
 }
 
-let arrayRecojido = JSON.parse(localStorage.getItem("databasesCategories"));
-
-if (arrayRecojido != null) {
-    databasesCategories = arrayRecojido;
-    if (document.getElementById("listaCategoriasUl")) {
-        mostrarCategorias();
-    }
+if (databasesCategories != null && document.getElementById("listaCategoriasUl")) {
+    mostrarCategorias();
 }
 
 export function mostrarCategorias() {
@@ -55,13 +47,20 @@ export function mostrarCategorias() {
 }
 
 export function borrarCategoria(index) {
+    const catABorrar = databasesCategories[index];
 
-
+    databaseTascas.forEach((tasca, tascaIndex) => {
+        if (tasca.categoria && 
+            tasca.categoria.nom === catABorrar.nom && 
+            tasca.categoria.color === catABorrar.color) {
+            databaseTascas[tascaIndex].categoria = { nom: "Sin categoria", color: "#ffffff" };
+        }
+    });
 
     databasesCategories.splice(index, 1);
     guardarDatos("databasesCategories", databasesCategories);
+    guardarDatos("databaseTascas", databaseTascas);
     mostrarCategorias();
 }
-console.log(databasesCategories)
-window.borrarCategoria = borrarCategoria;
 
+window.borrarCategoria = borrarCategoria;

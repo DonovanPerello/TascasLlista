@@ -1,9 +1,4 @@
-import {databasesCategories} from "./categories.js";
-
-
-
-export let databaseTascas = JSON.parse(localStorage.getItem("databaseTascas")) || [];
-
+import { guardarDatos,databaseTascas,databasesCategories} from "./storage.js";
 
 
 export function cargarCategoria() {

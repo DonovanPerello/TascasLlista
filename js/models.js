@@ -1,7 +1,6 @@
-import { databasesCategories } from "./categories.js";
-import { databaseTascas } from "./form-tasca.js";
+
 import { mostrarTascas } from "./index.js";
-import { guardarDatos} from "./storage.js"
+import { guardarDatos,databaseTascas,databasesCategories} from "./storage.js"
 
 const archivosDisponibles = [
     "activitats_001.json",
@@ -47,14 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     databaseTascas.push(...data);
                     mostrarTascas();
-                    console.log(databaseTascas);
+                   
 
                     guardarDatos("databaseTascas", databaseTascas);
                     
 
                     const soloCategorias = data.map(tasca => tasca.categoria);
                     databasesCategories.push(...soloCategorias);
-                    console.log(databasesCategories);
+            
                     
                     guardarDatos("databasesCategories", databasesCategories);
                 })
