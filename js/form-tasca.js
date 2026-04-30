@@ -1,11 +1,10 @@
-export let databasesCategories = [];
+import {databasesCategories} from "./categories.js";
+
+
 
 export let databaseTascas = JSON.parse(localStorage.getItem("databaseTascas")) || [];
 
-const datosLocal = localStorage.getItem("databasesCategories");
-if (datosLocal) {
-    databasesCategories = JSON.parse(datosLocal);
-}
+
 
 export function cargarCategoria() {
     const selectElement = document.getElementById("categoria");

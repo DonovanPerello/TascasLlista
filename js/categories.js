@@ -1,5 +1,7 @@
-import { guardarDatos} from "./storage.js"
+import { guardarDatos} from "./storage.js";
+import { databaseTascas } from "./form-tasca.js";
 export let databasesCategories = [];
+
 
 const formCat = document.getElementById("FormCategoria");
 
@@ -52,6 +54,9 @@ export function mostrarCategorias() {
 }
 
 export function borrarCategoria(index) {
+
+
+
     databasesCategories.splice(index, 1);
     guardarDatos("databasesCategories", databasesCategories);
     mostrarCategorias();
