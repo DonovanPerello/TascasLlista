@@ -1,6 +1,7 @@
 import { guardarDatos} from "./storage.js";
-import { databaseTascas } from "./form-tasca.js";
-export let databasesCategories = [];
+
+
+export let databasesCategories = JSON.parse(localStorage.getItem("databasesCategories")) || [];
 
 
 const formCat = document.getElementById("FormCategoria");
