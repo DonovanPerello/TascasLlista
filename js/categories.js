@@ -18,7 +18,7 @@ if (formCat) {
 
         databasesCategories.push(Categoria);
         mostrarCategorias();
-        guardarDatos("databaseCategories", databasesCategories);
+        guardarDatos("databasesCategories", databasesCategories);
     });
 }
 
@@ -53,7 +53,7 @@ export function mostrarCategorias() {
 
 export function borrarCategoria(index) {
     databasesCategories.splice(index, 1);
-    guardarDatos("databaseCategories", databasesCategories);
+    guardarDatos("databasesCategories", databasesCategories);
     mostrarCategorias();
 }
 console.log(databasesCategories)

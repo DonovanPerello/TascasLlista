@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     databasesCategories.push(...soloCategorias);
                     console.log(databasesCategories);
                     
-                    guardarDatos("databaseCategories", databasesCategories);
+                    guardarDatos("databasesCategories", databasesCategories);
                 })
                 .catch(err => console.error("Fallo en fetch:", err));
         });
