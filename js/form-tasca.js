@@ -29,8 +29,6 @@ if (formTascaElement) {
     const categoria = document.getElementById("categoria").value;
     const prioritat = document.getElementById("prioritat").value;
 
-   
-
     if (titol.trim() === "" || descripcio.trim() === "" || data === "" || categoria === "") {
         alert("Por favor, rellena todos los campos");
         return; 
@@ -54,6 +52,7 @@ if (formTascaElement) {
     const Objectcategoria = databasesCategories.find(cat => cat.nom === categoriaSeleccionada);
     
     let Tasca = {
+        id: null,
         titol : titol,
         descripcio: descripcio,
         data: data,
@@ -62,8 +61,39 @@ if (formTascaElement) {
         realitzada: false
     }
 
+    generarIdTasca(Tasca);
+
+    if(Tasca.id === null){
+        alert("Ha habido un error");
+        return;
+    } 
+
     databaseTascas.push(Tasca);
 
-
+    databaseTascas.sort((a, b) => Number(a.id.slice(5)) - Number(b.id.slice(5)));
     localStorage.setItem("databaseTascas", JSON.stringify(databaseTascas));
+    alert("Taca creada correctamente");
 })};
+
+
+export function generarIdTasca(Tasca){
+
+    if(databaseTascas.length === 0){
+        Tasca.id = "task-001";
+
+    } else {
+        const ultimaTasca = databaseTascas.at(-1);
+
+        let numeroExtraido = ultimaTasca.id.slice(5);
+
+        let numeroInt = Number(numeroExtraido);
+        let numeroFinal = numeroInt + 1;
+
+        let idFormateado = numeroFinal.toString().padStart(3, '0');
+
+        Tasca.id = "task-" + idFormateado;
+
+
+    }
+
+};

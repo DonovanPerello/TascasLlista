@@ -43,7 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     return response.json();
                 })
                 .then(data => {
-                    
+
+                    data = comprobrarJSON(data);
+                   databaseTascas.sort((a, b) => Number(a.id.slice(5)) - Number(b.id.slice(5)));
+                    data = cambiarIDs(data);
                     databaseTascas.push(...data);
                     mostrarTascas();
                    
@@ -51,13 +54,66 @@ document.addEventListener("DOMContentLoaded", () => {
                     guardarDatos("databaseTascas", databaseTascas);
                     
 
-                    const soloCategorias = data.map(tasca => tasca.categoria);
+                    c
+                    
                     databasesCategories.push(...soloCategorias);
             
                     
                     guardarDatos("databasesCategories", databasesCategories);
+                    console.log(databaseTascas);
                 })
                 .catch(err => console.error("Fallo en fetch:", err));
         });
     }
 });
+
+export function comprobrarJSON(data) {
+    
+    for (let i = data.length - 1; i >= 0; i--) {
+        const itemActual = data[i];
+
+        const existeEnBD = databaseTascas.some(dbItem => dbItem.titol === itemActual.titol);
+        if (existeEnBD) {
+            data.splice(i, 1);
+        }
+    }
+    
+    return data;
+}
+
+export function cambiarIDs(data){
+        let lastIdNum = 0;
+
+       if (databaseTascas.length > 0) {
+        let lastTasca = databaseTascas.at(-1);
+        lastIdNum = Number(lastTasca.id.slice(5)); 
+    }
+            
+
+    data.forEach((task , index)=> {
+
+    let nuevoNumero = lastIdNum + index + 1;
+
+    let idFormateado = nuevoNumero.toString().padStart(3, '0');
+            
+    task.id = "task-" + idFormateado ;
+
+    }); 
+
+    return data;
+}
+
+export function comprobarCategorias(data){
+
+    for (let i = data.length - 1; i >= 0; i--) {
+        const itemActual = data[i];
+
+        const existeEnBD = databasesCategories.some(dbItem => dbItem.nom === itemActual.nom);
+        if (existeEnBD) {
+            data.splice(i, 1);
+        }
+    }
+    
+    return data;
+
+}
