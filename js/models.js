@@ -37,83 +37,68 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            fetch(`./dades/${archivoSeleccionado}`)
-                .then(response => {
-                    if (!response.ok) throw new Error("Error al cargar");
-                    return response.json();
-                })
-                .then(data => {
+                fetch(`./dades/${archivoSeleccionado}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error("Error al cargar");
+                        return response.json();
+                    })
+                    .then(data => {
+                        const tareasFiltradas = comprobrarJSON(data);
+                        const categoriasParaAñadir = comprobarCategorias(tareasFiltradas);
 
-                    data = comprobrarJSON(data);
-                   databaseTascas.sort((a, b) => Number(a.id.slice(5)) - Number(b.id.slice(5)));
-                    data = cambiarIDs(data);
-                    databaseTascas.push(...data);
-                    mostrarTascas();
-                   
+                        databaseTascas.sort((a, b) => Number(a.id.slice(5)) - Number(b.id.slice(5)));
+                        
+                        const tareasConId = cambiarIDs(tareasFiltradas);
 
-                    guardarDatos("databaseTascas", databaseTascas);
-                    
+                        databaseTascas.push(...tareasConId);
+                        databasesCategories.push(...categoriasParaAñadir);
 
-                    c
-                    
-                    databasesCategories.push(...soloCategorias);
-            
-                    
-                    guardarDatos("databasesCategories", databasesCategories);
-                    console.log(databaseTascas);
-                })
-                .catch(err => console.error("Fallo en fetch:", err));
-        });
+                        mostrarTascas();
+                        guardarDatos("databaseTascas", databaseTascas);
+                        guardarDatos("databasesCategories", databasesCategories);
+                    })
+                    .catch(err => console.error("Fallo en fetch:", err));
+            });
     }
 });
 
 export function comprobrarJSON(data) {
-    
     for (let i = data.length - 1; i >= 0; i--) {
         const itemActual = data[i];
-
         const existeEnBD = databaseTascas.some(dbItem => dbItem.titol === itemActual.titol);
         if (existeEnBD) {
             data.splice(i, 1);
         }
     }
-    
     return data;
 }
 
-export function cambiarIDs(data){
-        let lastIdNum = 0;
-
-       if (databaseTascas.length > 0) {
+export function cambiarIDs(data) {
+    let lastIdNum = 0;
+    if (databaseTascas.length > 0) {
         let lastTasca = databaseTascas.at(-1);
-        lastIdNum = Number(lastTasca.id.slice(5)); 
+        lastIdNum = Number(lastTasca.id.slice(5));
     }
-            
 
-    data.forEach((task , index)=> {
-
-    let nuevoNumero = lastIdNum + index + 1;
-
-    let idFormateado = nuevoNumero.toString().padStart(3, '0');
-            
-    task.id = "task-" + idFormateado ;
-
-    }); 
+    data.forEach((task, index) => {
+        let nuevoNumero = lastIdNum + index + 1;
+        let idFormateado = nuevoNumero.toString().padStart(3, '0');
+        task.id = "task-" + idFormateado;
+    });
 
     return data;
 }
 
-export function comprobarCategorias(data){
+export function comprobarCategorias(data) {
+    let nuevasCategorias = [];
+    data.forEach(item => {
+        const catActual = item.categoria;
+        const existeEnBD = databasesCategories.some(dbItem => dbItem.nom === catActual.nom);
+        const yaAñadida = nuevasCategorias.some(n => n.nom === catActual.nom);
 
-    for (let i = data.length - 1; i >= 0; i--) {
-        const itemActual = data[i];
-
-        const existeEnBD = databasesCategories.some(dbItem => dbItem.nom === itemActual.nom);
-        if (existeEnBD) {
-            data.splice(i, 1);
+        if (!existeEnBD && !yaAñadida) {
+            nuevasCategorias.push(catActual);
         }
-    }
-    
-    return data;
-
+    });
+    return nuevasCategorias;
 }
