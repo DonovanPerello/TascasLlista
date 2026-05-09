@@ -67,6 +67,7 @@ export function mostrarTascas(){
         } else {
         contenedorCompletadas.innerHTML += TascaFormulari;
         }
+        renderizarGrafico();
 });
 
 }
@@ -96,3 +97,51 @@ window.borrarTasca = borrarTasca;
 window.DescompletarTasca = DescompletarTasca;
 mostrarTascas();
 mostrarArchivos();
+
+export function renderizarGrafico() {
+    const ctx = document.getElementById('graficoTascas');
+    if (!ctx) return;
+
+    const counts = new Array(12).fill(0);
+
+    databaseTascas.forEach(tasca => {
+        if (tasca.realitzada && tasca.data) {
+            const fecha = new Date(tasca.data);
+            const mes = fecha.getMonth();
+            if (!isNaN(mes)) {
+                counts[mes]++;
+            }
+        }
+    });
+
+    const chartExistente = Chart.getChart("graficoTascas");
+    if (chartExistente) {
+        chartExistente.destroy();
+    }
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            datasets: [{
+                label: 'Tareas Finalizadas',
+                data: counts,
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}

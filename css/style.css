@@ -374,7 +374,16 @@ ul {
         text-decoration-thickness: 2px !important;
         color: #444 !important;
     }
-    
+    .contenedor-grafico {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    margin: 20px 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
 /** final seccion index */
 
 
