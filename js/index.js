@@ -130,7 +130,7 @@ export function renderizarGrafico() {
                 backgroundColor: 'rgba(59, 130, 246, 0.1)',
                 borderWidth: 2,
                 fill: true,
-                tension: 0.3
+                tension: 0.1
             }]
         },
         options: {
