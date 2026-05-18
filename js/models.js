@@ -4,7 +4,8 @@ import { guardarDatos,databaseTascas,databasesCategories} from "./storage.js"
 
 const archivosDisponibles = [
     "activitats_001.json",
-    "activitats_002.json"
+    "activitats_002.json",
+    "activitatXML_001.xml"
 ];
 
 export function mostrarArchivos() {
@@ -39,16 +40,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 fetch(`./dades/${archivoSeleccionado}`)
                     .then(response => {
-                        if (!response.ok) throw new Error("Error al cargar");
-                        return response.json();
+
+                        
+                            if (!response.ok) throw new Error("Error al cargar");
+                                if(archivoSeleccionado.endsWith("json")){
+                                return response.json();
+                                } else return response.text();
+                        
                     })
                     .then(data => {
-                        const tareasFiltradas = comprobrarJSON(data);
-                        const categoriasParaAñadir = comprobarCategorias(tareasFiltradas);
+                        let tareasBase = [];
+
+                        
+                        if(archivoSeleccionado.endsWith("json")){
+                            tareasBase = data; 
+                        } else {
+                            tareasBase = transformarXMLaTascas(data);
+                        }
+                        tareasBase = comprobrarJSON(tareasBase);
+                        const categoriasParaAñadir = comprobarCategorias(tareasBase);
 
                         databaseTascas.sort((a, b) => Number(a.id.slice(5)) - Number(b.id.slice(5)));
                         
-                        const tareasConId = cambiarIDs(tareasFiltradas);
+                        const tareasConId = cambiarIDs(tareasBase);
 
                         databaseTascas.push(...tareasConId);
                         databasesCategories.push(...categoriasParaAñadir);
@@ -71,6 +85,38 @@ export function comprobrarJSON(data) {
         }
     }
     return data;
+}
+export function transformarXMLaTascas(textoXML) {
+    
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(textoXML, "application/xml");
+    
+    let tascasGeneradas = [];
+    
+    const nodosTasca = xmlDoc.getElementsByTagName("tasca");
+
+    for (let i = 0; i < nodosTasca.length; i++) {
+        const nodo = nodosTasca[i];
+        
+        let tascaTraduida = {
+            id: nodo.getAttribute("id"), 
+            titol: nodo.getElementsByTagName("titol")[0].textContent,
+            
+            descripcio: nodo.getElementsByTagName("descripcio")[0].textContent,
+            data:nodo.getElementsByTagName("data")[0].textContent,
+            categoria: {
+                        nom: nodo.getElementsByTagName("nom")[0].textContent,
+                        color: nodo.getElementsByTagName("color")[0].textContent
+                        },
+            prioritat: nodo.getElementsByTagName("prioritat")[0].textContent,
+            realitzada: false
+        
+        };
+        
+        tascasGeneradas.push(tascaTraduida);
+    }
+    
+    return tascasGeneradas;
 }
 
 export function cambiarIDs(data) {

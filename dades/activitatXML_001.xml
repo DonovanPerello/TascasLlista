@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tasques xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:noNamespaceSchemaLocation="activitats_001.xsd">
+    <tasca id="task-001">
+        <titol>Crea l'estructura de carpetes del projecte</titol>
+        <descripcio>Organitza els fitxers: HTML, CSS, JS, dades...</descripcio>
+        <data>2024-08-01</data>
+        <categoria>
+            <nom>Organització</nom>
+            <color>#FF5733</color>
+        </categoria>
+        <prioritat>Alta</prioritat>
+        <realitzada>false</realitzada>
+    </tasca>
+    <tasca id="task-002">
+        <titol>Crear el document HTML</titol>
+        <descripcio>Crear l'estructura bàsica del document HTML</descripcio>
+        <data>2024-07-01</data>
+        <categoria>
+            <nom>Desenvolupament</nom>
+            <color>#33FF57</color>
+        </categoria>
+        <prioritat>Alta</prioritat>
+        <realitzada>false</realitzada>
+    </tasca>
+    <tasca id="task-003">
+        <titol>Aconseguir fer el XML</titol>
+        <descripcio> Conseguir fer el xml fet a ma y mostrarlo per pantalla</descripcio>
+        <data>2024-09-01</data>
+        <categoria>
+            <nom>Desenvolupament</nom>
+            <color>#33FF57</color>
+        </categoria>
+        <prioritat>Baixa</prioritat>
+        <realitzada>false</realitzada>
+    </tasca>
+</tasques>
